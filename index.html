@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0c13" />
+  <meta name="description" content="SURVIVAL 101 — a touch-first spooky hospital dungeon crawler." />
+  <title>SURVIVAL 101 — Dungeon Crawler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <section id="home-screen" class="screen active" aria-labelledby="game-title">
+      <div class="home-noise" aria-hidden="true"></div>
+      <header class="topbar home-topbar">
+        <div class="brand-lockup">
+          <span class="brand-mark">✣</span>
+          <span>OBSIDIAN ARCADE</span>
+        </div>
+        <div class="topbar-right">
+          <span class="status-dot"></span>
+          <span>OFFLINE / SAFE TO PLAY</span>
+        </div>
+      </header>
+
+      <main class="home-layout">
+        <div class="home-copy">
+          <p class="eyebrow">NIGHT SHIFT // CASE 001</p>
+          <h1 id="game-title">SURVIVAL<br /><span>101</span></h1>
+          <p class="home-lede">The lights are out at Saint Dymphna's.<br />Something is still awake.</p>
+          <div class="home-actions" aria-label="Main menu">
+            <button class="menu-button primary" data-go="game" type="button">
+              <span class="button-icon">↳</span><span>PLAY</span><span class="button-hint">ENTER THE HOSPITAL</span>
+            </button>
+            <button class="menu-button" data-go="boosts" type="button">
+              <span class="button-icon">✦</span><span>BOOST UPS</span><span class="button-hint">UPGRADE YOUR SURVIVAL</span>
+            </button>
+            <button class="menu-button" data-go="shop" type="button">
+              <span class="button-icon">◇</span><span>SHOP</span><span class="button-hint">TRADE YOUR GEMS</span>
+            </button>
+          </div>
+          <p class="microcopy"><span class="key-chip">NO ADS</span> &nbsp; Made for waiting rooms and brave thumbs.</p>
+        </div>
+
+        <div class="hero-stage" aria-label="Umra, the playable hunter">
+          <div class="moon"></div>
+          <div class="hero-haze haze-one"></div>
+          <div class="hero-haze haze-two"></div>
+          <div class="hospital-skyline">
+            <span class="building building-a"></span><span class="building building-b"></span><span class="building building-c"></span>
+            <i class="window w1"></i><i class="window w2"></i><i class="window w3"></i><i class="window w4"></i><i class="window w5"></i>
+          </div>
+          <div class="hero-character" aria-hidden="true">
+            <div class="hero-hair"></div>
+            <div class="hero-head"><span class="hero-eye left"></span><span class="hero-eye right"></span></div>
+            <div class="hero-neck"></div>
+            <div class="hero-body"><span class="shirt-symbol">✣</span></div>
+            <div class="hero-arm arm-left"></div><div class="hero-arm arm-right"></div>
+            <div class="hero-leg leg-left"></div><div class="hero-leg leg-right"></div>
+            <div class="hero-weapon"></div>
+          </div>
+          <div class="hero-nameplate"><span class="small-label">THE HUNTER</span><strong>UMRA</strong><span class="nameplate-line"></span></div>
+          <div class="floor-shadow"></div>
+        </div>
+
+        <aside class="home-card">
+          <div class="card-kicker"><span>RUN STATUS</span><span class="signal-bars">▂▅▇</span></div>
+          <div class="profile-row"><div class="mini-avatar">U</div><div><strong>UMRA</strong><span>THE KIND ONE</span></div><b>LV. 01</b></div>
+          <div class="card-rule"></div>
+          <div class="stat-line"><span>LAST KNOWN FLOOR</span><strong id="home-floor">01 / 03</strong></div>
+          <div class="stat-line"><span>GEMS</span><strong><span class="gem-icon">◆</span> <span id="home-gems">0</span></strong></div>
+          <div class="stat-line"><span>HEALTH KIT</span><strong><span class="pill-icon">+</span> <span id="home-potions">0</span></strong></div>
+          <div class="card-quote">“If you hear the elevator<br />bell, do not answer.”</div>
+        </aside>
+      </main>
+
+      <footer class="home-footer"><span>v1.0 // SAINT DYMPHNA'S ARCHIVE</span><span>TOUCHSCREEN READY <i class="footer-dot"></i></span></footer>
+    </section>
+
+    <section id="menu-screen" class="screen inner-screen" aria-live="polite">
+      <header class="topbar">
+        <button class="back-button" data-go="home" type="button">← <span>BACK</span></button>
+        <div class="topbar-title">SURVIVAL <b>101</b></div>
+        <div class="topbar-currency"><span class="gem-icon">◆</span> <strong id="menu-gems">0</strong></div>
+      </header>
+      <main class="menu-content">
+        <div class="section-heading"><p class="eyebrow" id="menu-eyebrow">FIELD PREP</p><h2 id="menu-title">BOOST UPS</h2><p id="menu-subtitle">A little preparation goes a long way in a dark hospital.</p></div>
+        <div id="boosts-panel" class="cards-grid">
+          <article class="upgrade-card"><div class="upgrade-icon heart-icon">♥</div><div><span class="card-label">VITAL SIGNS</span><h3>Extra Pulse</h3><p>Start each floor with +15 max health.</p></div><button class="small-action" data-upgrade="health" type="button">UPGRADE <b>◆ 350</b></button><div class="upgrade-level" id="health-level">LEVEL 0 / 3</div></article>
+          <article class="upgrade-card"><div class="upgrade-icon speed-icon">»</div><div><span class="card-label">QUICK FEET</span><h3>Night Runner</h3><p>Move faster through the hospital halls.</p></div><button class="small-action" data-upgrade="speed" type="button">UPGRADE <b>◆ 500</b></button><div class="upgrade-level" id="speed-level">LEVEL 0 / 3</div></article>
+          <article class="upgrade-card"><div class="upgrade-icon blade-icon">╱</div><div><span class="card-label">HUNTER'S EDGE</span><h3>Cold Iron</h3><p>Deal more damage with every swing.</p></div><button class="small-action" data-upgrade="damage" type="button">UPGRADE <b>◆ 450</b></button><div class="upgrade-level" id="damage-level">LEVEL 0 / 3</div></article>
+        </div>
+        <div id="shop-panel" class="cards-grid hidden">
+          <article class="shop-card featured-item"><div class="item-art potion-art"><span>✚</span></div><div class="item-copy"><span class="card-label">CONSUMABLE // ALWAYS USEFUL</span><h3>Vitality Potion</h3><p>Restores 50% of your health in a blink.</p><div class="item-foot"><strong>◆ 120</strong><button class="small-action buy-button" data-buy="potion" type="button">BUY</button></div></div></article>
+          <article class="shop-card"><div class="item-art charm-art">✣</div><div class="item-copy"><span class="card-label">CHARM // LUCKY</span><h3>Ghostlight Charm</h3><p>Earn a little more from every cleared floor.</p><div class="item-foot"><strong>◆ 900</strong><button class="small-action buy-button" data-buy="charm" type="button">BUY</button></div></div></article>
+          <article class="shop-card"><div class="item-art badge-art">✦</div><div class="item-copy"><span class="card-label">BADGE // RARE</span><h3>Night Shift Pin</h3><p>A tiny reminder that you made it out once.</p><div class="item-foot"><strong>◆ 650</strong><button class="small-action buy-button" data-buy="badge" type="button">BUY</button></div></div></article>
+        </div>
+        <div class="menu-note"><span class="status-dot"></span><span id="menu-note-text">Upgrades persist between runs. You keep everything when you respawn.</span></div>
+      </main>
+    </section>
+
+    <section id="game-screen" class="screen game-screen" aria-label="Dungeon crawler game">
+      <div id="game-shell">
+        <canvas id="game-canvas" aria-label="Saint Dymphna's hospital dungeon"></canvas>
+        <div class="vignette" aria-hidden="true"></div>
+        <div id="blackout" class="blackout hidden" aria-hidden="true"></div>
+        <header class="game-hud">
+          <div class="hud-left"><button id="pause-button" class="hud-icon-button" type="button" aria-label="Pause game">Ⅱ</button><div><span class="hud-kicker">SAINT DYMPHNA'S HOSPITAL</span><strong id="floor-label">FLOOR 01 <i>•</i> WEST WARD</strong></div></div>
+          <div class="hud-center"><div class="quest-label">CURRENT OBJECTIVE</div><div id="quest-text">Find Lily's plushies <b>0/3</b></div><div class="quest-track"><span id="quest-progress"></span></div></div>
+          <div class="hud-right"><div class="hud-resource"><span class="gem-icon">◆</span><strong id="game-gems">0</strong></div><div class="hud-resource"><span class="pill-icon">+</span><strong id="game-potions">0</strong></div></div>
+        </header>
+        <div class="health-hud"><div class="health-label"><span>UMRA</span><strong id="health-text">100 / 100</strong></div><div class="health-bar"><span id="health-fill"></span></div></div>
+        <div id="dialogue-panel" class="dialogue-panel hidden"><div class="dialogue-avatar" id="dialogue-avatar">L</div><div class="dialogue-content"><div class="dialogue-speaker" id="dialogue-speaker">LILY <span>THE UNFINISHED</span></div><p id="dialogue-text"></p><button id="dialogue-next" type="button">CONTINUE <span>↵</span></button></div></div>
+        <div id="game-toast" class="game-toast"></div>
+        <div id="controls" class="controls" aria-label="Touch controls">
+          <div id="joystick" class="joystick" aria-label="Movement joystick"><div class="joystick-ring"><div id="joystick-knob" class="joystick-knob"></div></div><span>MOVE</span></div>
+          <div class="action-pad"><button id="jump-button" class="action-button jump" type="button"><span>↑</span><small>JUMP</small></button><button id="heal-button" class="action-button heal" type="button"><span>+</span><small>HEAL</small></button><button id="attack-button" class="action-button attack" type="button"><span>✣</span><small>FIGHT</small></button></div>
+        </div>
+        <div id="pause-panel" class="game-modal hidden"><div class="modal-card"><span class="eyebrow">RUN PAUSED</span><h2>THE HOSPITAL<br /><em>IS LISTENING.</em></h2><p>Take a breath. Your progress is safe.</p><button class="modal-button" id="resume-button" type="button">RESUME</button><button class="modal-link" data-go="home" type="button">QUIT TO HOME</button></div></div>
+        <div id="death-panel" class="game-modal hidden"><div class="modal-card death-card"><span class="eyebrow">SIGNAL LOST</span><h2>THE DARK<br /><em>GOT YOU.</em></h2><p>Good thing the hospital remembers where you fell.</p><div class="death-stats"><span>ITEMS KEPT <b>✓</b></span><span>RESPAWN POINT <b id="death-floor">FLOOR 01</b></span></div><button class="modal-button" id="respawn-button" type="button">RESPAWN HERE</button></div></div>
+      </div>
+    </section>
+
+    <section id="ending-screen" class="screen ending-screen">
+      <div class="ending-stars"></div>
+      <div id="ending-story" class="ending-story">
+        <div class="ending-story-card">
+          <div class="ending-story-top"><span id="ending-story-kicker" class="eyebrow">THE LAST LIGHT</span><span id="ending-story-count">01 / 06</span></div>
+          <h2 id="ending-story-title">THE ROOM<br /><em>GOES QUIET.</em></h2>
+          <p id="ending-story-text">Collin is gone. The hospital holds its breath, and Lily is the only thing left moving in the dark.</p>
+          <blockquote id="ending-story-quote" class="ending-story-quote hidden"></blockquote>
+          <button id="ending-next" class="ending-next" type="button">CONTINUE <span>↵</span></button>
+          <div class="ending-story-progress"><span id="ending-story-progress-fill"></span></div>
+        </div>
+      </div>
+      <div id="ending-final" class="ending-copy hidden"><span class="eyebrow">CASE CLOSED // 03:17 AM</span><h2>THE KIND<br /><em>ONE.</em></h2><p>Some ghosts are monsters.<br />Some are just children who waited too long.</p><div class="ending-reward"><span>RUN REWARD</span><strong><span class="gem-icon">◆</span> +3,000</strong><strong><span class="pill-icon">+</span> +5</strong></div><button class="modal-button" id="ending-home" type="button">BACK TO HOME</button></div>
+      <div id="ending-whisper" class="ending-whisper hidden">“You... you forgive me?”<br /><span>— Lily</span></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
